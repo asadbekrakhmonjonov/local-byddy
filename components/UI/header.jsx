@@ -1,71 +1,26 @@
-'use client';
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/events', label: 'Events' },
-    { href: '/matchmaking', label: 'Matchmaking' },
-    { href: '/chat', label: 'Chat' },
-    { href: '/profile', label: 'Profile' },
-  ];
-
+export default function Header() {
   return (
-    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-      <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
-        <Link href="/" className="flex items-center space-x-3">
-          <Image
-            src="/localbuddy-logo.png"
-            alt="Logo"
-            width={42}
-            height={42}
-            className="rounded-md"
-          />
-          <span className="text-2xl font-semibold dark:text-white">LocalBuddy</span>
-        </Link>
-
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          className="md:hidden p-2 text-gray-500 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 focus:outline-none"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-
-        <div
-          id="mobile-menu"
-          className={`transition-all duration-300 ease-in-out w-full md:flex md:w-auto md:items-center ${menuOpen ? '' : 'hidden'}`}
-        >
-          <ul className="flex flex-col md:flex-row md:space-x-8 font-medium bg-gray-50 md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none dark:bg-gray-800 md:dark:bg-transparent border md:border-0 dark:border-gray-700">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`block px-3 py-2 rounded md:p-0 ${
-                    pathname === link.href
-                      ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:md:text-blue-500'
-                      : 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <header className="flex items-center justify-between p-4 shadow-md relative">
+      <div className="flex items-center p-10 ml-4 mt-2">
+        <Image 
+          src="/localbuddy-logo.png" 
+          alt="LocalBuddy Logo" 
+          width={214} 
+          height={78} 
+        />
       </div>
-    </nav>
-  );
-};
 
-export default Navbar;
+
+      {/* Centered navigation moved slightly left and bigger text */}
+      <nav className="absolute left-[40%] transform -translate-x-1/2 flex space-x-6">
+        <Link href="/chats" className="text-white hover:text-blue-600 text-2xl font-semibold">Chats</Link>
+        <Link href="/matchmaking" className="text-white hover:text-blue-600 text-2xl font-semibold">Matchmaking</Link>
+        <Link href="/events" className="text-white hover:text-blue-600 text-2xl font-semibold">Events</Link>
+        <Link href="/about" className="text-white hover:text-blue-600 text-2xl font-semibold">About</Link>
+      </nav>
+    </header>
+  )
+}
