@@ -15,11 +15,11 @@ export default function Header() {
         </Link>
       </div>
 
-      <nav className="absolute left-[40%] transform -translate-x-1/2 flex space-x-4">
-        <Link href="/chats" className="text-white hover:text-blue-600 text-lg font-semibold">Chats</Link>
-        <Link href="/matchmaking" className="text-white hover:text-blue-600 text-lg font-semibold">Matchmaking</Link>
-        <Link href="/events" className="text-white hover:text-blue-600 text-lg font-semibold">Events</Link>
-        <Link href="/about" className="text-white hover:text-blue-600 text-lg font-semibold">About</Link>
+      <nav className="absolute left-[50%] transform -translate-x-1/2 flex space-x-4">
+        <Link href="/chats" className="text-white hover:text-blue-600 text-xl font-bold">Chats</Link>
+        <Link href="/matchmaking" className="text-white hover:text-blue-600 text-xl font-bold">Matchmaking</Link>
+        <Link href="/events" className="text-white hover:text-blue-600 text-xl font-bold">Events</Link>
+        <Link href="/about" className="text-white hover:text-blue-600 text-xl font-bold">About</Link>
       </nav>
     </header>
   )
